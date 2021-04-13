@@ -1,0 +1,976 @@
+html,
+body{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	font-family: "Tekton Pro";
+}
+*{
+	box-sizing:border-box;
+}
+
+/** ***** BOTONES ***** **/
+.botonNaranja{
+	width: 100%;
+    font-size: 15px !important;
+    color: #FFF !important;
+    padding: 5px 10px !important;
+    border: none !important;
+    border-radius: 15px !important;
+    background: #e93400 !important;
+    cursor: pointer !important;
+}
+
+/** ***** MENSAJES ALERT ***** **/
+#contenedorAlert{
+	position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.1);
+    z-index: 99999;
+	display:none;
+}
+#contenedorAlert .cajaAlert{
+	position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 500px;
+    background: #FFF;
+    border-radius: 15px;
+    padding: 40px;
+	box-shadow: 0 0 10px 0 #000;
+}
+#contenedorAlert .cajaAlert .txtAlert{
+	display:block;
+	width:100%;
+	color: #e93400;
+    font-size: 20px;
+	margin-bottom:40px;
+}
+#contenedorAlert .cajaAlert .btnAlert{
+	float: right;
+    margin: 0 auto;
+    font-size: 20px;
+    color: #FFF;
+    padding: 10px;
+    background-color: #e93400;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 160px;
+}
+#contenedorAlert .cajaAlert .btnAlertCancelar{
+	float: left;
+    margin: 0 auto;
+    font-size: 20px;
+    color: #e93400;
+    padding: 10px;
+    background-color: #fff;
+    border: solid 2px #e93400;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 160px;
+}
+
+/** ***** ESTRUCTURA PRINCIPAL ***** **/
+#contenedorGeneral{
+	width:100%;
+	min-height:100%;
+	margin:0;
+	padding:0;
+	border-spacing:0;
+	background:#FFF;
+}
+#contenedorGeneral #encabezado{
+	position:relative;
+	height:75px;
+	padding:10px;
+	background:#FFF;
+}
+#contenedorGeneral .separador{
+	height:10px;
+}
+#contenedorGeneral .columnaMenu{
+	width:85px;
+}
+#contenedorGeneral .espacioDerecha{
+	width:10px;
+}
+#contenedorGeneral #contenedorPestanias{
+	height:40px;
+	padding:0;
+	padding-bottom:0;
+}
+#contenedorGeneral #contenedorContenido{
+	padding:10px;
+	background:#FFF;
+	border:solid 1px #e93400;
+	border-radius:15px;
+	min-height:500px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	vertical-align:top;
+}
+#contenedorGeneral #contenedorContenido .iframeContenido{
+	width:100%;
+	height:calc(100vh - 160px);
+	border:none;
+}
+
+/** ***** ENCABEZADO ***** **/
+#contenedorGeneral #encabezado #logo{
+	height:50px;
+}
+#contenedorGeneral #encabezado #bienvenido{
+	position:absolute;
+	top:10px;
+	right:10px;
+	font-size:15px;
+	color:#000;
+}
+#contenedorGeneral #encabezado #bienvenido span{
+	color:#e93400;
+}
+#contenedorGeneral #encabezado #bienvenido a{
+	text-decoration:none;
+	color:#000;
+	transition:0.3s;
+}
+#contenedorGeneral #encabezado #bienvenido a:hover{
+	color:#e93400;
+}
+
+/** ***** MENU PRINCIPAL ***** **/
+#menuResp{
+	display:none;
+}
+#contenedorMenu{
+	position: fixed;
+    width: 75px;
+    background: #FFF;
+    top: 75px;
+    left: 0;
+    bottom: 0;
+	overflow:hidden;
+	transition:0.3s;
+	z-index:9;
+}
+#contenedorMenu #contenedorMenuScroll{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	padding:10px;
+}
+#contenedorMenu:hover{
+    width: 400px;
+	box-shadow: 0 0 10px 0 #999;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+
+}
+#contenedorMenu:hover #contenedorMenuScroll{
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+#contenedorMenu .itemMenu{
+	width:100%;
+	height:47px;
+	font-size:30px;
+	color:#e93400;
+	padding:5px 10px;
+	border-radius:15px;
+	margin-bottom:10px;
+	cursor:pointer;
+	transition:0.3s;
+	overflow:hidden;
+}
+#contenedorMenu .itemMenuSeleccionado,
+#contenedorMenu .itemMenu:hover{
+	color:#FFF;
+	background:rgba(233, 52, 0, 1);
+}
+#contenedorMenu .itemMenu .material-icons{
+	font-size: 35px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+#contenedorMenu .itemMenu .subItemMenu{
+	display:block;
+	padding:10px;
+	padding-left:45px;
+	font-size:25px;
+	transition:0.3s;
+}
+#contenedorMenu .itemMenu .subItemMenu:hover{
+	color:#FFF;
+}
+
+/** ***** PESTANIAS ***** **/
+#contenedorPestanias .pestania{
+    position: relative;
+	float: left;
+	height:45px;
+	font-size:20px;
+    background: #EEE;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 10px 35px;
+    border: solid 1px #000;
+    border-bottom: none;
+	cursor:pointer;
+	transition:0.3s;
+}
+#contenedorPestanias .pestania .icono{
+	position: absolute;
+    top: 9px;
+    left: 7px;
+	transition:0.3s;
+}
+#contenedorPestanias .pestania .texto{
+	transition:0.3s;
+}
+#contenedorPestanias .pestania .cerrar{
+	position: absolute;
+    top: 7px;
+    right: 7px;
+	transition:0.3s;
+}
+#contenedorPestanias .pestania .cerrar .material-icons{
+	transition:0.3s;
+}
+#contenedorPestanias .pestania .cerrar:hover .material-icons{
+	color: #F00;
+    box-shadow: 0 0 10px 0 #999;
+    border-radius: 100px;
+}
+#contenedorPestanias .pestaniaActiva,
+#contenedorPestanias .pestania:hover{
+	background:#FFF;
+	color:#e93400;
+	border-color:#e93400;
+}
+#contenedorPestanias .pestaniaActiva{
+	height:46px;
+	margin-bottom:-1px;
+}
+
+/** ***** CONTENIDO ***** **/
+/* Listados */
+.tablaListados{
+	width:100%;
+	border-spacing:0;
+}
+.tablaListados .encabezados th{
+	font-size:20px;
+	font-weight:bold;
+	color:#e93400;
+	padding:10px;
+}
+.tablaListados .filtros td{
+	font-size:20px;
+	color:#000;
+	padding:10px;
+}
+.tablaListados .filtros td input,
+.tablaListados .filtros td select{
+	width:100%;
+	font-size:15px;
+	color:#000;
+	padding:5px 10px;
+	border-radius:15px;
+	border:solid 1px #CCC;
+}
+.tablaListados .filtros td .calendario{
+	width:48%;
+}
+.tablaListados .noticia:hover{
+	background:#CCC;
+}
+.tablaListados .noticia td{
+	font-size:15px;
+	color:#000;
+	padding:10px;
+}
+.tablaListados .noticia .ordenNoticia{
+	width:170px;
+}
+.tablaListados .noticia .ordenNoticia input[type=text]{
+	width: 60px;
+	padding: 5px 10px;
+	border: solid 1px #CCC;
+	border-radius: 10px;
+}
+.tablaListados .noticia .ordenNoticia input[type=submit]{
+	width:75px;
+}
+.tablaListados .noticia .noticiaFecha,
+.tablaListados .noticia .noticiaTipo,
+.tablaListados .noticia .noticiaEstado{
+	text-align:center;
+}
+.tablaListados .acciones{
+	text-align:right;
+}
+.tablaListados .acciones .material-icons{
+	color:#e93400;
+	margin-left:10px;
+	cursor:pointer;
+}
+.imagenListadoNoticias{
+	max-width:100px;
+	max-height:100px;
+}
+/* Editar */
+.tablaEditar{
+	width:100%;
+	border-spacing:0;
+}
+.tablaEditar .input{
+	padding:10px;
+}
+.tablaEditar .input input,
+.tablaEditar .input select,
+.tablaEditar .input textarea{
+	width:100%;
+	padding:5px 10px;
+	resize:none;
+	color:#000;
+	border:solid 1px #CCC;
+	border-radius:15px;
+}
+.tablaEditar .input input[type=file]{
+	position:relative;
+}
+.tablaEditar .input input[type=file]:before{
+	content: "Seleccionar Imagen";
+    position: absolute;
+    font-size: 15px;
+    color: #FFF;
+    padding: 8px 7px;
+    border: none;
+    border-radius: 15px;
+    background: #e93400;
+    cursor: pointer;
+    z-index: 1;
+    top: -1px;
+    left: -1px;
+    height: 18px;
+}
+#cargarArchivoAdjuntoNoticias:before{
+	content: "Seleccionar Archivo" !important;
+}
+.tablaEditar .input input[type=checkbox]{
+	width:auto;
+}
+.tablaEditar .input textarea{
+	height:400px;
+}
+.tablaEditar .input .botonCancelar{
+	color:#000;
+	background:#FFF;
+	width:auto;
+	padding:5px 15px;
+	cursor:pointer;
+	margin-right:30px;
+	border:solid 1px #000;
+}
+.tablaEditar .input .botonEliminar{
+	color:#FFF;
+	background:#F00;
+	width:auto;
+	padding:5px 15px;
+	cursor:pointer;
+	border:none;
+	margin-right:30px;
+}
+.tablaEditar .input .botonGuardar{
+	color:#FFF;
+	background:#006400;
+	width:auto;
+	padding:5px 15px;
+	cursor:pointer;
+	border:none;
+	margin-right:30px;
+}
+.tablaEditar .vistaPreviaNoticias{
+	width:400px;
+	padding:10px;
+	vertical-align:top;
+}
+.tablaEditar .input .listadoOpciones{
+	width: 100%;
+    border-spacing: 0;
+    border: solid 1px #CCC;
+    border-radius: 15px;
+}
+.tablaEditar .input .listadoOpciones td{
+	padding:5px 10px;
+}
+.tablaEditar .input .imagenMuestra{
+	width:300px;
+}
+.tablaEditar .input #borrarImagenNoticia{
+	color:red;
+	font-weight:normal;
+	cursor:pointer;
+	text-decoration:underline;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna{
+	/*
+    width: 360px;
+    height: 640px;
+	*/
+	float:right;
+	width:300px;
+	height:534px;
+	background-image: url(../images/interna.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 85px;
+    padding-bottom: 88px;
+	font-family:arial;
+	color:#444;
+	border:solid 1px #000;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna{
+	width:100%;
+	height:100%;
+	overflow:auto;
+	padding:0 10px;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna::-webkit-scrollbar-thumb {
+    background: #CCC;
+	height:35px;
+	border-radius:15px;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #vpi1{
+	width: 100%;
+    font-size: 15px;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #vpi1 #rojo1{
+	color: #971228;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #vpi1 #azul1{
+	color: #0066cc;
+	text-transform:uppercase;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #titulo1{
+	width: 100%;
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #cosas{
+	width:100%;
+	font-size:13px;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #cosas span{
+	color: #971228;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #imagen{
+	width:100%;
+	border-top:solid 1px #0066cc;
+	border-bottom:solid 1px #0066cc;
+	margin:20px 0;
+	padding:10px 0;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #imagen img{
+	width:100%;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #texto1{
+	width:100%;
+	font-size:15px;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaInterna #contenedorVistaPreviaInterna #masinfo{
+	width: 100%;
+    text-align: right;
+    margin: 20px 0;
+    font-size: 15px;
+	color: #0066cc;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado{
+	float:right;
+	width:300px;
+	height:534px;
+	background-image: url(../images/listado.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 150px;
+    padding-bottom: 88px;
+	font-family:arial;
+	color:#444;
+	margin-top:30px;
+	border:solid 1px #000;
+	overflow:hidden;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table{
+	width:100%;
+	box-shadow: 0 4px 10px #CCC;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table #vpl1{
+	width: 100%;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table #vpl1 #azul{
+	color: #0066cc;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table #vpl1 #rojo{
+	color: #971228;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table #vpl2{}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table #vpl2 #titulo{
+	font-weight: bold;
+    text-transform: uppercase;
+	font-size:10px;
+	margin: 10px 0;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table #vpl2 #texto{
+	font-size:10px;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table #vpl2 #fecha{
+	font-size:10px;
+	color: #0066cc;
+	margin: 10px 0;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table #vpl3{
+	padding:10px;
+	text-align:right;
+}
+.tablaEditar .vistaPreviaNoticias #vistaPreviaListado table #vpl3 img{
+	width:100px;
+	box-shadow:0 0 10px 0 #CCC;
+}
+
+/** ***** ESFERA PUBLICA ***** **/
+.tituloCMSEP{
+	font-size:25px;
+	color:#e93400;
+	padding:20px;
+}
+.tituloCMSEP input[type=button]{
+	float:right !important;
+	width:auto !important;
+}
+.bloque{
+	margin:20px;
+	padding:20px;
+	border:solid 1px #ccc;
+	border-radius:15px;
+}
+.bloque .tituloSlider{
+	font-size:20px;
+	color:#e93400;
+	padding:20px;
+}
+.bloque .tituloSlider .material-icons{
+	float:right;
+	cursor:pointer;
+}
+.bloque input[type=text]{
+	width:100%;
+	margin:10px;
+	border-radius:15px;
+	font-size:20px;
+	border:solid 1px #ccc;
+	padding:5px 10px;
+}
+.bloque textarea{
+	width:100%;
+	margin:10px;
+	border-radius:15px;
+	font-size:20px;
+	border:solid 1px #ccc;
+	padding:5px 10px;
+	height:150px;
+	resize:none;
+	overflow:auto;
+}
+.botonesEP{
+	display:block;
+	width:100%;
+	margin-top:20px;
+}
+.botonesEP .botonCancelar{
+	float:left;
+	width:45%;
+	text-align:right;
+}
+.botonesEP .botonCancelar .botonNaranja{
+	width:auto !important;
+}
+.botonesEP .botonGuardar{
+	float:right;
+	width:45%;
+}
+.botonesEP .botonGuardar .botonNaranja{
+	width:auto !important;
+}
+.contServicios{
+	width:100%;
+}
+.contServicios .acciones{
+	width:120px;
+	padding:0 20px;
+	text-align:center;
+}
+.contServicios .acciones .material-icons{
+	font-size:35px;
+	color:#e93400;
+	cursor:pointer;
+}
+.contServicios .botonNaranja{
+	width:auto !important;
+}
+.contServicios .inputServicios{
+	padding:10px;
+}
+.contServicios input[type=text]{
+	width:100%;
+	margin:0;
+	border-radius:15px;
+	font-size:20px;
+	border:solid 1px #ccc;
+	padding:5px 10px;
+}
+.contServicios textarea{
+	width:100%;
+	margin:0;
+	border-radius:15px;
+	font-size:20px;
+	border:solid 1px #ccc;
+	padding:5px 10px;
+	height:150px;
+	resize:none;
+	overflow:auto;
+}
+.contServicios .tituloSlider{
+	cursor:pointer;
+}
+.trBIOL,
+.trBIOD,
+.trQS,
+.trQND,
+.trAPPDATE,
+.trMONITOREO,
+.trCONSULTORIA,
+.trINCIDENCIA{
+	display:none;
+}
+.trBIOL input,
+.trBIOL textarea,
+.trBIOD input,
+.trBIOD textarea{
+	margin-bottom:20px !important;
+}
+.trBIOL img,
+.trBIOD img{
+	max-width:150px;
+}
+#volverImgLorena,
+#volverImgDoris{
+	display:none;
+	cursor:pointer;
+	color:#e93400;
+	font-size:20px;
+	text-decoration:underline;
+}
+
+/** ***** SERVICIOS ***** **/
+.contModalCambioNombreServicio{
+	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+	display:none;
+}
+.contModalCambioNombreServicio .frmModalCambioNombreServicio{
+	position: absolute;
+    margin: 0 auto;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border: solid 1px #CCC;
+    background: #FFF;
+    border-radius: 15px;
+    width: 500px;
+    height: 166px;
+    margin-top: -84px;
+    padding: 20px;
+}
+.contModalCambioNombreServicio .frmModalCambioNombreServicio .titulo{
+	color:#e93400;
+	font-size:20px;
+	padding:0;
+	padding-bottom:20px;
+}
+.contModalCambioNombreServicio .frmModalCambioNombreServicio input[type=text]{
+	width:100%;
+	margin:0;
+	border-radius:15px;
+	font-size:20px;
+	border:solid 1px #ccc;
+	padding:5px 10px;
+}
+.contModalCambioNombreServicio .frmModalCambioNombreServicio input[type=button]{
+	float:left;
+	background:#e93400;
+	margin-top:20px;
+	cursor:pointer;
+	border-radius:15px;
+	padding:5px 10px;
+	color:#FFF;
+	border:none;
+}
+.contModalCambioNombreServicio .frmModalCambioNombreServicio input[type=submit]{
+	float:right;
+	background:#e93400;
+	margin-top:20px;
+	cursor:pointer;
+	border-radius:15px;
+	padding:5px 10px;
+	color:#FFF;
+	border:none;
+}
+
+/** ***** CLIENTES ***** **/
+.nuevoGrupo{
+	width:100%;
+	text-align:right;
+	padding:20px;
+}
+.nuevoGrupo input[type=button]{
+	color: #FFF;
+    background: #e93400;
+    width: auto;
+    padding: 5px 15px;
+    cursor: pointer;
+    border: none;
+    margin-right: 30px;
+	border-radius:15px;
+}
+.contGruposClientes{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background: rgba(255, 255, 255, 0.7);	
+}
+.contGruposClientes .gruposClientes{
+	position:relative;
+	width: 70%;
+    padding: 20px;
+    border: solid 1px #ccc;
+    border-radius: 15px;
+    margin: 20px auto;
+    background: #FFF;
+	overflow: auto;
+    max-height: 90%;
+}
+.contGruposClientes .gruposClientes .titulo{
+	width:100%;
+	color:#e93400;
+	padding:20px;
+}
+.contGruposClientes .gruposClientes .iconoCerrar{
+	position:absolute;
+	top:20px;
+	right:20px;
+	color:#F00;
+	cursor:pointer;
+}
+.contGruposClientes .gruposClientes table{
+	width:100%;
+	border-spacing:0;
+}
+.contGruposClientes .gruposClientes table td{
+	padding:5px 10px;
+}
+.contGruposClientes .gruposClientes table .col1 input{
+	border:solid 1px #CCC;
+	background:#FFF;
+	border-radius:15px;
+	padding:5px 10px;
+	width:100%;
+}
+.contGruposClientes .gruposClientes table .col2{
+	width:30px;
+	text-align:center;
+}
+.contGruposClientes .gruposClientes table .col2 .material-icons{
+	color:#12bacc;
+	cursor:pointer;
+}
+.contGruposClientes .gruposClientes table .col3{
+	width:30px;
+	text-align:center;
+}
+.contGruposClientes .gruposClientes table .col3 .material-icons{
+	color:#F00;
+	cursor:pointer;
+}
+
+
+/** ***** RESPONSIVE ***** **/
+@media screen and (max-width: 1000px) {
+	#contenedorGeneral #encabezado{
+		height:6vh;
+	}
+	#contenedorGeneral #encabezado #logo{
+		height:5vh;
+		vertical-align:middle;
+	}
+	#contenedorGeneral #encabezado #bienvenido{
+		width: 100vw;
+		top: 2vh;
+		text-align: center;
+		font-size: 1.5vh;
+	}
+	#contenedorMenu{
+		width:15vw;
+		top:7vh;
+	}
+	#contenedorMenu:hover{
+		width:80vw;
+	}
+	#contenedorMenu .itemMenu .material-icons{
+		font-size:10vw;
+	}
+	#contenedorMenu .itemMenu{
+		height: 11vw;
+		font-size:7vw;
+	}
+	#contenedorMenu .itemMenu .subItemMenu{
+		font-size:7vw;
+		padding-left: 17vw;
+	}
+	.itemMenuEsferaPublicaWeb{
+		display:none;
+	}
+	#contenedorGeneral .columnaMenu{
+		width:15vw;
+	}
+	#contenedorPestanias .pestania{
+		display:none;
+	}
+	.tablaListados{
+		
+	}
+	.tablaListados tr{
+		display:flex;
+		flex-direction:column;
+		padding-bottom: 2vh;
+		margin-bottom: 2vh;
+		border-bottom: solid 1px #CCC;
+	}
+	.tablaListados .encabezados th{
+		display:none;
+	}
+	.tablaListados .encabezados th:last-of-type{
+		display:block;
+	}
+	.tablaListados tr td{
+		
+	}
+	.botonNaranja{
+		font-size:3vh !important;
+	}
+	.tablaListados .filtros td input,
+	.tablaListados .filtros td select{
+		font-size:3vh !important;
+	}
+	.tablaListados .noticia td{
+		text-align:center !important;
+		font-size:3vh !important;
+	}
+	.imagenListadoNoticias{
+		max-width:100%;
+		max-height:max-content;
+	}
+	.tablaListados .noticia .acciones{
+		display:flex;
+		justify-content: space-evenly;
+	}
+	.tablaListados .noticia .acciones .material-icons{
+		font-size: 5vh !important;
+	}
+	.tablaListados .noticia .ordenNoticia,
+	.tablaListados .noticia .ordenNoticia form{
+		display:flex;
+		width:100%;
+		justify-content: space-between;
+	}
+	.tablaListados .noticia .ordenNoticia input[type=text]{
+		width: 40%;
+		font-size: 3vh !important;
+		padding: 0.5vh;
+		border: solid 1px #CCC;
+		border-radius: 10px;
+	}
+	.tablaListados .noticia .ordenNoticia input[type=submit]{
+		width:40%;
+	}
+	.tablaEditar{
+		font-size: 3vh
+	}
+	.tablaEditar .vistaPreviaNoticias{
+		display:none;
+	}
+	.tablaEditar .input input, 
+	.tablaEditar .input select, 
+	.tablaEditar .input textarea{
+		font-size:3vh;
+	}
+	.tablaEditar .input .imagenMuestra{
+		width:100%;
+	}
+	.tablaEditar .input #borrarImagenNoticia{
+		font-size: 3vh;
+		margin: 3vh 0;
+	}
+	.tablaEditar .input input[type=file]:before{
+		height:auto;
+		width:auto;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		font-size:3vh;
+	}
+	.tablaEditar .input .listadoOpciones{
+		font-size:3vh;
+	}
+	.tablaEditar .input .listadoOpciones tr{
+		display:flex;
+		flex-direction:column;
+	}
+	.tablaEditar .input input[type=checkbox]{
+		width: 3vh;
+		height: 3vh;
+	}
+	.tablaEditar .trBotonesSubmitFrmNoticias td{
+		display:flex;
+		flex-direction:column;
+	}
+	.tablaEditar .trBotonesSubmitFrmNoticias td input{
+		margin-bottom:3vh;
+		font-size:4vh;
+	}
+}
